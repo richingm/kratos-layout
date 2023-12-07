@@ -2,7 +2,7 @@ package application
 
 import (
 	"context"
-	"github.com/go-kratos/kratos-layout/internal/domain"
+	"github.com/go-kratos/kratos-layout/internal/domain/biz"
 
 	v1 "github.com/go-kratos/kratos-layout/api/helloworld/v1"
 )
@@ -11,17 +11,17 @@ import (
 type GreeterService struct {
 	v1.UnimplementedGreeterServer
 
-	uc *domain.GreeterUsecase
+	uc *biz.GreeterUsecase
 }
 
 // NewGreeterService new a greeter service.
-func NewGreeterService(uc *domain.GreeterUsecase) *GreeterService {
+func NewGreeterService(uc *biz.GreeterUsecase) *GreeterService {
 	return &GreeterService{uc: uc}
 }
 
 // SayHello implements helloworld.GreeterServer.
 func (s *GreeterService) SayHello(ctx context.Context, in *v1.HelloRequest) (*v1.HelloReply, error) {
-	g, err := s.uc.CreateGreeter(ctx, &domain.Greeter{Hello: in.Name})
+	g, err := s.uc.CreateGreeter(ctx, &biz.Greeter{Hello: in.Name})
 	if err != nil {
 		return nil, err
 	}
