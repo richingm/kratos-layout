@@ -1,4 +1,4 @@
-package Infrastructure
+package infrastructure
 
 import (
 	"github.com/go-kratos/kratos-layout/internal/conf"

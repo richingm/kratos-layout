@@ -7,10 +7,10 @@
 package main
 
 import (
-	"github.com/go-kratos/kratos-layout/internal/Infrastructure"
 	"github.com/go-kratos/kratos-layout/internal/application"
 	"github.com/go-kratos/kratos-layout/internal/conf"
 	"github.com/go-kratos/kratos-layout/internal/domain"
+	"github.com/go-kratos/kratos-layout/internal/infrastructure"
 	"github.com/go-kratos/kratos-layout/internal/server"
 
 	"github.com/go-kratos/kratos/v2"
@@ -21,11 +21,11 @@ import (
 
 // wireApp init kratos application.
 func wireApp(confServer *conf.Server, confData *conf.Data, logger log.Logger) (*kratos.App, func(), error) {
-	dataData, cleanup, err := Infrastructure.NewData(confData, logger)
+	dataData, cleanup, err := infrastructure.NewData(confData, logger)
 	if err != nil {
 		return nil, nil, err
 	}
-	greeterRepo := Infrastructure.NewGreeterRepo(dataData, logger)
+	greeterRepo := infrastructure.NewGreeterRepo(dataData, logger)
 	greeterUsecase := domain.NewGreeterUsecase(greeterRepo, logger)
 	greeterService := application.NewGreeterService(greeterUsecase)
 	grpcServer := server.NewGRPCServer(confServer, greeterService, logger)
