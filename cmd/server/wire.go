@@ -6,7 +6,10 @@
 package main
 
 import (
+	"github.com/go-kratos/kratos-layout/internal/application"
 	"github.com/go-kratos/kratos-layout/internal/conf"
+	"github.com/go-kratos/kratos-layout/internal/domain"
+	"github.com/go-kratos/kratos-layout/internal/infrastructure"
 	"github.com/go-kratos/kratos-layout/internal/server"
 	"github.com/go-kratos/kratos/v2"
 	"github.com/go-kratos/kratos/v2/log"
