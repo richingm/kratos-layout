@@ -2,6 +2,7 @@ package application
 
 import (
 	"context"
+	"github.com/go-kratos/kratos-layout/internal/domain"
 
 	v1 "github.com/go-kratos/kratos-layout/api/helloworld/v1"
 )

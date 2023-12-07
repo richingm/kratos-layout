@@ -2,6 +2,7 @@ package Infrastructure
 
 import (
 	"context"
+	"github.com/go-kratos/kratos-layout/internal/domain"
 
 	"github.com/go-kratos/kratos/v2/log"
 )
